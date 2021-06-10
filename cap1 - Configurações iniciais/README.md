@@ -1,30 +1,33 @@
-# Capítulo 1 - Configurando o ambiente para desenvolvimento com Git<a name='cap1'></a>
+# Capítulo 1 - Configurando o ambiente
 
-### <a href='#secao1.1'>1.1. Instalação e configuração</a>
-### <a href='#secao1.2'>1.2. Configurando o global</a>
-### <a href='#secao1.3'>1.3. Gerando e adicionando uma chave SSH</a>
+1. [Instalação e configuração](#1-instalação-e-configuração)  
+2. [Configurando o global](#2-configurando-o-global)  
+3. [Gerando e adicionando a chave SSH](#3-gerando-e-adicionando-a-chave-ssh)  
 
-## 1.1. Instalação e configuração<a name='secao1.1'></a>
+## 1 Instalação e configuração
 Em geral, o Git ja vem instalado por padrão na maior parte das distribuições Linux. Caso ele não esteja instalado, execute o comando abaixo no terminal:
-```sh
-$ sudo apt-get install git
-```
-
-Para fazer a instalação no Windows acesso este  <a href="https://gitforwindows.org/">link</a>, faça o download do instalador e execute-o.
-
-## 1.2. Configurando o global<a name='secao1.2'></a>
-Uma vez que o Git está instalado, a primeira coisa a fazer é configurar seu usuário. Estas informações são importantes pois serão anexadas a todos os commits que você fizer.
 
 ```sh
-$ git config --global user.name "Seu Nome"
-$ git config --global user.email exemplo@email.com.br
+sudo apt-get install git
 ```
 
-Se você utilizar a opção `--global` não será necessário realizar estes passos novamente e a não ser que outras pessoas desenvolvam no mesmo computador, não há motivo para ser feito de outra forma.
+Para fazer a instalação no Windows acesso este <a href="https://gitforwindows.org/">link</a>, faça o download do instalador e execute-o.
 
-Você pode verificar as configurações com o comando: `$ git config --list`
+## 2 Configurando sua identificação
 
-## 1.3. Gerando e Adicionando uma chave SSH<a name='secao1.3'></a>
+Uma vez que o Git está instalado, a primeira coisa a fazer é configurar seu usuário. Estas informações são importantes pois serão anexadas a todos os commits realizados.
+
+```sh
+git config --global user.name "Seu Nome"
+git config --global user.email exemplo@email.com.br
+```
+
+Se você utilizar a opção `--global` não será necessário realizar estes passos novamente e a não ser que outras pessoas desenvolvam no mesmo computador, não há motivo para ser feito de outra forma. Mas caso exista motivo para isso, ou você apenas queira definir identificações específicas para cada repositório substitua `--global` por `--local`.
+
+As configurações podem ser listadas com o comando `git config --list`.
+
+## 3 Gerando e adicionando a chave SSH
+
 Para que seus repositórios consigam se comunicar com o servidor remoto é necessário que você configure as chaves privada e pública no local e remoto, respectivamente.
 Antes de gerar um par de chaves, você pode verificar se elas já existem. Para isso liste o conteúdo do diretório `~/.ssh`, que é onde as chaves SSH são armazenadas por padrão.
 
@@ -38,8 +41,9 @@ O que estamos procurando é um par de arquivos chamados `id\_ed25519` e `id\_ed2
 Para gerar um novo par de chaves execute o seguinte comando:
 
 ```sh
-$ ssh-keygen -t ed25519 -a 100
+ssh-keygen -t ed25519 -a 100
 ```
+
 ```sh
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/home/usuario/.ssh/id_ed25519): 
@@ -68,4 +72,17 @@ Você pode deixar em branco o local e a senha (basta ir dando enter). A chave p�
 ```sh
 $ cat ~/.ssh/id_ed25519.pub 
 ssh-ed25519 TRALALALALAminhachaveSSH123456789batatinhaquandonasceEspArrAmaPeloChaoZinho142536QWERTmnbv usuario@pv
+```
+
+---
+
+Caso você esteja tentando clonar um repositório do GitHub usando o protocolo SSH e receba algum erro sobre permissão ou acesso como apresentado abaixo, tente criar uma nova chave SSH seguindo exatamente as instruções do próprio [GitHub](https://help.github.com/articles/generating-ssh-keys/).
+
+```sh
+$ git clone git@github.com:brnocesar/learning-git.git
+Cloning into 'learning-git'...
+\302\226git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights and the repository exists.
 ```
