@@ -56,6 +56,8 @@ git commit -m "Adiciona filtros na tela para listagem de produtos"
 	<figcaption>Figura 4 - Fluxo de alterações.</figcaption>
 </figure>
 
+Um ponto muito importante que deve ser frisado sobre os _commits_ é: **"Você NÃO DEVE _commitar_ (conscientemente) alterações que quebrem o código"**.
+
 ## 4 Visualizando o histórico
 
 Para visualizar os _commits_ realizados temos o comando `git log`, que nos fornece as informações mais básicas de cada _commit_: (i) o identificador único do _commit_; (ii) a _branch_ em que o _commit_ está; (iii) a identificação do autor; (iv) horário; e (v) a mensagem.
