@@ -5,6 +5,8 @@
 	<figcaption>Figura 0 - O que é Git?</figcaption>
 </figure>
 
+---
+
 1. Configurações iniciais  
 2. Trabalhando em um repositório  
 3. Trabalhando com o Remoto  

@@ -4,7 +4,8 @@
 2. [Adicionando alterações](#3-adicionando-alterações)  
 3. [Fazendo o _commit_](#4-fazendo-o-_commit_)  
 4. [Visualizando o histórico](#5-visualizando-o-histórico)  
-5. [Ignorando arquivos](#6-ignorando-arquivos)  
+5. [Visualizando as alterações](#5-visualizando-as-alterações)  
+6. [Ignorando arquivos](#6-ignorando-arquivos)  
 
 ## 1 Inicializando um repositório local
 
@@ -83,7 +84,14 @@ Esse comando possui vários argumentos que permitem refinar a consulta:
 - `-S"console.log"`: consulta _commits_ de acordo com busca no código  
 - `-G"foo.*"`: consulta _commits_ de acordo com busca no código, aceita _regex_   
 
-## 5 Ignorando arquivos
+## 5 Visualizando as alterações
+
+Anteriormente usamos o comando `git diff` para visualizar as alterações em andamento, antes que estas fossem para _stage_. A partir do momento que temos alguns _commits_ podemos querer visualizar as diferenças entre eles, e para isso basta passar as _hashes_ dos _commits_ de referência no comando abaixo:
+
+```sh
+git diff <hash 1>..<hash 2>
+```
+## 6 Ignorando arquivos
 
 É muito comum os projetos terem arquivos exclusivos para as variáveis de ambiente (conexão com banco de dados e outros serviços externos, por exemplo). Não só não faz sentido versionar essas informações como em muitos casos isso pode ser uma falha de segurança. Assim precisamos indicar ao Git que alguns arquivos devem ser ignorados.
 
