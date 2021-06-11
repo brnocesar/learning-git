@@ -1,21 +1,114 @@
-# 3. Clonando um repositório<a name='cap3'></a>
+# Capítulo 3 - Trabalhando com o Remoto
 
-### <a href='#secao3.1'>3.1. Repositório do Grupo</a>
-### <a href='#secao3.2'>3.2. _Fork_</a>
-### <a href='#secao3.2.1'>3.2.1. Configurando os _remotes_</a>
-### <a href='#secao3.2.2'>3.2.2. Atualizando o repositório local em relação ao remoto</a>
+1. [Projeto no GitLab](#1-projeto-no-gitlab)  
+2. [Clonando um repositório](#2-clonando-um-repositório)  
+3. [Sincronizando os dados](#3-sincronizando-os-dados)  
 
-## 3.1. Repositório do Grupo<a name='secao3.1'></a>
-Se você for trabalhar no repositório do Grupo da PV (que é o recomendável) basta realizar o clone do repositório:
+## 1 Projeto no GitLab
+
+Partindo da tela inicial do Grupo localizamos o botão `New Project` no canto superior direito (Fig. 1) e clicamos nele. É possível criar um novo projeto a partir de várias telas dentro do Grupo e em todas o botão fica na mesma posição.
+
+<figure>
+	<img src="cap3-1-new.png" />
+	<figcaption>Figura 1 - Localização do botão `New Project`.</figcaption>
+</figure>
+
+Você será redirecionado para a tela de "Criação de um novo projeto" (Fig. 2) e todas as ações necessárias serão feitas na aba `Blank project`. Ao definir o nome do projeto seu _slug_ é preenchido automáticamente, mas essa informação pode ser alterada. Também é possível definir se o projeto ficará alocado em algum subgrupo e escrever uma breve descrição.
+
+Você **deve** se certificar que o projeto é privado, por padrão esse checkbox não pode ser desmarcado, mas é sempre bom dar uma olhada nisso. Após preencher os campos necessários clique em `Create poject`.
+
+<figure>
+	<img src="cap3-2-criando.png" />
+	<figcaption>Figura 2 - Tela de criação de um novo projeto.</figcaption>
+</figure>
+
+Por fim você será redirecionado para a página inicial do projeto e a partir dai basta seguir as instruções presentes nesta página.
+
+<figure>
+	<img src="cap3-3-repositorio.png" />
+	<figcaption>Figura 3 - Tela inicial do repositório.</figcaption>
+</figure>
+
+## 2 Clonando um repositório
+
+A forma mais simples de iniciar a contribuição em um projeto é fazendo o clone do seu repositório. Isso é basicamente fazer uma cópia do repositório da nuvem na sua máquina. Caso você já tenha adicionado sua chave SSH à conta do serviço de Git, basta copiar a URL do repositório no protecolo SSH e rodar o comando abaixo:
+
 ```sh
-$ git clone git@gitlab.com:powervending/subgrupo/projeto.git
+git clone <url do repositório> [nome do diretório local]
 ```
-Após isso você deve atualizar a branch _develop_ do seu repositório local para garantir que irá trabalhar na versão mais atual do código. Isso pode ser feito com os comandos abaixo:
+
+Do contrário terá que clonar o repositório no protocolo HTTP e terá que informar suas credências em todas as comunicações do repositório local com o remoto.
+
+Note que a `<url do repositório>` pode ser qualquer URL de um repositório válido, até mesmo pastas na sua máquina ou da rede.
+
+Após clonar o repositório é possível verificar seus _remotes_ com o comando `git remote -v`:
+
 ```sh
-repositorio$ git fetch --all
-repositorio$ git pull origin develop
+$ git remote -v
+origin  git@github.com:brnocesar/learning-git.git (fetch)
+origin  git@github.com:brnocesar/learning-git.git (push)
 ```
-Note que você deve realizar o procedimento de atualização do projeto sempre que for iniciar o trabalho.
+
+Neste ponto temos apenas o _remote_ padrão que se chama `origin`. Note que temos uma URL para "puxar" alterações (_fetch_), ou seja, atualizar o repositório local de acordo com o remoto, e outra URL para enviar nossas alterações (push) ao remoto. O mais comum é essa configuração com as duas URLs iguais, mas é possível enviar e atualizar a partir de _remotes_ diferentes.
+
+### 2.1 Adicionando o _remote_
+
+Para os casos em que o desenvolvimento já foi iniciado antes de criar o repositório em alguma serviço Git, basta adicionar a URL desse repositório como um _remote_ do local:
+
+```sh
+git remote add <nome do remote> <url do repositório>
+```
+
+Seguindo com o exemplo, definimos o nome do _remote_ como `origin` por convenção e colocamos a devida URL:
+
+```sh
+git remote add origin git@github.com:brnocesar/learning-git.git
+```
+
+## 3 Sincronizando os dados
+
+### 3.1 Enviando dados do local para o remoto
+
+Após realizar os _commits_ e incorporar as alterações no repositório local, ainda é necessário enviá-las para a nuvem, o que é feito através do comando:
+
+```sh
+git push <remote de destino> <branch de destino>
+```
+
+Seguindo o exemplo desse repositório seria algo do tipo:
+
+```sh
+git push origin refat-cap3
+```
+
+aqui as alterações estão sendo enviadas para o _remote_ chamado `origin` na _branch_ chamada `refat-cap3`, e não é necessário que a _branch_ de destino já exista no _remote_.
+
+No Capítulo 2 não foram criadas _branchs_ de trabalho, mas essa é uma boa prática que deve ser adotada no dia a dia do desenvolvimento colaborativo, mais a frente vamos voltar nesse assunto.
+
+### 3.2 Trazendo dados do remoto para o local
+
+Conforme outras pessoas vão adicionando suas alterações ao _remote_ é necessário atualizar seu local, o comando abaixo executa essa ação:
+
+```sh
+git pull <remote> <branch>
+```
+
+Basta especificar a _branch_ e de que _remote_ seram "puxadas" as atualizações para o local, por exemplo:
+
+```sh
+git pull origin develop
+```
+
+Essa etapa "fecha" o ciclo das alterações no repositório, como visto na ilustração abaixo. O ideal é que essas atualizações sejas feitas constantemente, para garantir que o desenvolvimento está sendo feito com o código mais atual possível.
+
+<figure>
+	<img src="cap3-4-flow.png"/>
+	<figcaption>Figura 4 - Fluxo das alterações no seu repositório Git ao longos de cada etapa.</figcaption>
+</figure>
+
+---
+
+daqui para baixo não está revisado
 
 ## 3.2. _Fork_<a name='secao3.2'></a>
 Vamos abordar o procedimento para realizar o _fork_ de um repositório. Em termos práticos, fazer o _fork_ de um repositório significa que estamos criando uma cópia deste repositório em sua conta. Isso nos permite realizar alterações no repositório "copiado" sem que tais alterações se reflitam no original. 
