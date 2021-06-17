@@ -1,4 +1,4 @@
-# Capítulo 2 - Trabalhando em um repositório
+# Capítulo 2 - Trabalhando no repositório local
 
 1. [Inicializando um repositório local](#2-inicializando-um-repositório-local)  
 2. [Adicionando alterações](#3-adicionando-alterações)  

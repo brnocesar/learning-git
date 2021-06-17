@@ -23,7 +23,7 @@ git checkout <hash> # altera o estado do HEAD para o commit indicado
 
 ## 3 Armazanando na pilha
 
-Não é possível mudar de _branch_ com alterações fora de _stage_ (não commitadas), então se isso for necessário é preciso mudar 
+Não é possível mudar de _branch_ com alterações fora de _stage_ (não commitadas), então se isso for necessário é preciso colocar suas alterações em _stash_: 
 
 ```sh
 git stash # manda as alterações inacabas da branch para pilha de WIPs

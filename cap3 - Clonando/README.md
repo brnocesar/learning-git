@@ -6,14 +6,14 @@
 
 ## 1 Projeto no GitLab
 
-Partindo da tela inicial do Grupo localizamos o botão `New Project` no canto superior direito (Fig. 1) e clicamos nele. É possível criar um novo projeto a partir de várias telas dentro do Grupo e em todas o botão fica na mesma posição.
+Partindo da tela inicial do Grupo localizamos o botão `New Project` no canto superior direito (Figura 1) e clicamos nele. É possível criar um novo projeto a partir de várias telas dentro do Grupo e em todas o botão fica na mesma posição.
 
 <figure>
 	<img src="cap3-1-new.png" />
-	<figcaption>Figura 1 - Localização do botão `New Project`.</figcaption>
+	<figcaption>Figura 1 - Destaque para o botão `New Project`.</figcaption>
 </figure>
 
-Você será redirecionado para a tela de "Criação de um novo projeto" (Fig. 2) e todas as ações necessárias serão feitas na aba `Blank project`. Ao definir o nome do projeto seu _slug_ é preenchido automáticamente, mas essa informação pode ser alterada. Também é possível definir se o projeto ficará alocado em algum subgrupo e escrever uma breve descrição.
+Você será redirecionado para a tela de "Criação de um novo projeto" (Fig. 2) e todas as ações necessárias serão feitas na aba `Blank project`. Ao definir o nome do projeto seu _slug_ é preenchido automáticamente, mas é editável. Também é possível definir se o projeto ficará alocado em algum subgrupo e escrever uma breve descrição.
 
 Você **deve** se certificar que o projeto é privado, por padrão esse checkbox não pode ser desmarcado, mas é sempre bom dar uma olhada nisso. Após preencher os campos necessários clique em `Create poject`.
 
@@ -31,13 +31,13 @@ Por fim você será redirecionado para a página inicial do projeto e a partir d
 
 ## 2 Clonando um repositório
 
-A forma mais simples de iniciar a contribuição em um projeto é fazendo o clone do seu repositório. Isso é basicamente fazer uma cópia do repositório da nuvem na sua máquina. Caso você já tenha adicionado sua chave SSH à conta do serviço de Git, basta copiar a URL do repositório no protecolo SSH e rodar o comando abaixo:
+A forma mais simples de iniciar a contribuição em um projeto é fazendo o clone do seu repositório. Isso é basicamente "trazer" uma cópia do repositório na nuvem para sua máquina. Basta copiar a URL do repositório no protecolo que preferir e rodar o comando abaixo:
 
-```sh
+```terminal
 git clone <url do repositório> [nome do diretório local]
 ```
 
-Do contrário terá que clonar o repositório no protocolo HTTP e terá que informar suas credências em todas as comunicações do repositório local com o remoto.
+Caso sua escolha seja pelo protocolo SSH, certifique-se de já ter adicionado sua chave SSH pública à conta do serviço Git. Se optar pelo protocolo HTTP será necessário informar suas credências em todas as comunicações do repositório local com o remoto.
 
 Note que a `<url do repositório>` pode ser qualquer URL de um repositório válido, até mesmo pastas na sua máquina ou da rede.
 
@@ -49,13 +49,13 @@ origin  git@github.com:brnocesar/learning-git.git (fetch)
 origin  git@github.com:brnocesar/learning-git.git (push)
 ```
 
-Neste ponto temos apenas o _remote_ padrão que se chama `origin`. Note que temos uma URL para "puxar" alterações (_fetch_), ou seja, atualizar o repositório local de acordo com o remoto, e outra URL para enviar nossas alterações (push) ao remoto. O mais comum é essa configuração com as duas URLs iguais, mas é possível enviar e atualizar a partir de _remotes_ diferentes.
+Neste ponto temos apenas o _remote_ padrão que se chama `origin`. Note que temos uma URL para "puxar" alterações (_fetch_), ou seja, atualizar o repositório local de acordo com o remoto, e outra URL para enviar nossas alterações (_push_) ao remoto. O mais comum é essa configuração com as duas URLs iguais, mas é possível enviar e atualizar a partir de _remotes_ diferentes.
 
 ### 2.1 Adicionando o _remote_
 
 Para os casos em que o desenvolvimento já foi iniciado antes de criar o repositório em alguma serviço Git, basta adicionar a URL desse repositório como um _remote_ do local:
 
-```sh
+```terminal
 git remote add <nome do remote> <url do repositório>
 ```
 

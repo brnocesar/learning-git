@@ -58,19 +58,19 @@ Após finalizar o desenvolvimento em um dos ramos é necessário mesclá-lo a um
 git merge <branch>
 ```
 
-Por exemplo, ao finalizar a correção do bug de seleção de produtos na _branch_ `bug-fix-product-selection` devemos mudar para a _branch_ `develop` e a partir dela "puxar" as alterações que serão mescladas:
+Por exemplo, ao finalizar a correção do bug de seleção de produtos na _branch_ `bug-fix` devemos mudar para a _branch_ `develop` e a partir dela "puxar" as alterações que serão mescladas:
 
 ```sh
-(bug-fix-product-selection) $ git checkout develop
+(bug-fix) $ git checkout develop
 Switched to branch 'develop'
-(develop) $ git merge bug-fix-product-selection
+(develop) $ git merge bug-fix
 ```
 
 e ao realizar essa ação é gerado um _commit_ de _merge_ para marcar o ponto em que os ramos foram mesclados.
 
 ## 3 Limpando os _logs_ com _rebase_
 
-Sempre que é feito um _merge_ em alguma _branch_ é gerado um _commit_ para marcar esse evento e com o tempo isso pode poluir o histórico de _logs_. 
+Sempre que é feito um _merge_ em alguma _branch_ é gerado um _commit_ para marcar esse evento, e com o tempo isso pode poluir o histórico de _logs_. 
 
 Podemos usar o _rebase_ para "incorporar" os _commits_ de uma outra _branch_ sem manter os "_checkpoints_" de _merge_.
 
@@ -87,8 +87,8 @@ Abra a IDE e faça por lá.
 Uma vez que o desenvolvimento em uma _branch_ foi finalizado e suas alterações já foram incorporadas em outro ramo, não há mais necessidade de matê-la. O comandos para deletar _branchs_ são:
 
 ```sh
-git branch -d branch-local # deleta uma branch local
-git push origin --delete branch-remote # deleta uma branch remota
+git branch -d <branch> # deleta uma branch local
+git push origin --delete <branch> # deleta uma branch remota
 ```
 
 ---

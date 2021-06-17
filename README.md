@@ -7,6 +7,8 @@
 
 ---
 
-1. Configurações iniciais  
-2. Trabalhando em um repositório  
+1. Configurando o ambiente  
+2. Trabalhando no repositório local  
 3. Trabalhando com o Remoto  
+4. Trabalhando em equipe  
+5. Revertendo alterações  
